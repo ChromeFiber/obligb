@@ -9,6 +9,11 @@ import {NgForm} from "@angular/forms";
 })
 export class SykkelkategoriComponent implements OnInit {
   sykkelKategorier: Array<object>;
+  categoryName: string = "";
+
+  dataStatus: string = 'Add';
+
+  sykId: string;
   constructor(private sks: SykkelKategoriService) { }
 
   ngOnInit(): void {
@@ -17,5 +22,4 @@ export class SykkelkategoriComponent implements OnInit {
       console.log(value);
     });
   }
-
 }

@@ -1,13 +1,7 @@
 <h1>Vis sykkelkategorier</h1>
-<form>
-  <label>
-    <input type="text" #tekst />
-  </label>
-  <button >Søk</button>
-  <div class="" *ngFor="let modell of sykkelKategorier">
+<div class="" *ngFor="let modell of sykkelKategorier">
 
-      <h3>{{modell.data.kategori}}</h3>
+    <h3 [routerLink]="['/sykkel/', modell.kategori]" >{{modell.data.kategori}} - antall: {{modell.data.antSykkel}}</h3>
 
-  </div>
+</div>
 
-</form>

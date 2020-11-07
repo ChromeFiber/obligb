@@ -7,12 +7,14 @@ import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {FormsModule} from "@angular/forms";
 import {AngularFireModule} from "@angular/fire";
 import { SykkelkategoriComponent } from './sykkelkategori/sykkelkategori.component';
+import { SyklerComponent } from './sykler/sykler.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SykkelkategoriComponent
+    SykkelkategoriComponent,
+    SyklerComponent
   ],
   imports: [
     BrowserModule,
