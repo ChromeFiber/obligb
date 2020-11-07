@@ -9,6 +9,7 @@ import {SyklerService} from "../service/sykler.service";
   styleUrls: ['./sykler.component.scss']
 })
 export class SyklerComponent implements OnInit {
+
   catId: string;
   sykkel: Array<object>;
   dataStatus: string = 'Add';
@@ -16,6 +17,7 @@ export class SyklerComponent implements OnInit {
   todoId: string;
   sykkelPris: number;
   fabrikk: string;
+
   constructor(private sykkelService: SyklerService, private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {

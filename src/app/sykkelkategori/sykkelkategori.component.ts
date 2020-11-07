@@ -10,9 +10,7 @@ import {NgForm} from "@angular/forms";
 export class SykkelkategoriComponent implements OnInit {
   sykkelKategorier: Array<object>;
   categoryName: string = "";
-
   dataStatus: string = 'Add';
-
   sykId: string;
   constructor(private sks: SykkelKategoriService) { }
 
@@ -21,5 +19,13 @@ export class SykkelkategoriComponent implements OnInit {
       this.sykkelKategorier = value;
       console.log(value);
     });
+  }
+  onSubmit(f: NgForm) {
+    let katInfo = {
+      kategori: f.value.categoryName,
+      antSykkel: 0,
+    }
+    this.sks.nyKategori(katInfo);
+    //console.log(randomNum);
   }
 }

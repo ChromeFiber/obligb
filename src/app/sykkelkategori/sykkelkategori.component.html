@@ -1,7 +1,26 @@
-<h1>Vis sykkelkategorier</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" class="form-inline">
+      <div class="col-md-10 form-group">
+        <label>
+          <input class="input" type="text" placeholder="Add new categories here" name="categoryName" class=" form-control-plaintext
+          drop-shadow" [(ngModel)] = 'categoryName' required #category = "ngModel"
+                 [ngClass] = "{'border-danger': f.submitted && category.invalid}">
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary col-md-2 btn-todo btn-block">{{dataStatus}}</button>
+
+      <div class="text-danger ml-3" *ngIf="f.submitted && category.invalid && category.errors.required">
+        Category is required!
+      </div>
+    </form>
+  </div>
+</div>
+<h1>Sykkelkategorier</h1>
 <div class="" *ngFor="let modell of sykkelKategorier">
-
-    <h3 [routerLink]="['/sykkel/', modell.kategori]" >{{modell.data.kategori}} - antall: {{modell.data.antSykkel}}</h3>
-
+    <h3 class="sykkel-kategori" [routerLink]="['/sykkel/', modell.kategori]">
+      {{modell.data.kategori}} - antall: {{modell.data.antSykkel}}
+    </h3>
 </div>
 

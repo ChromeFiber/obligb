@@ -20,5 +20,11 @@ export class SykkelKategoriService {
       })
     )
   }
+  nyKategori(data){
+    this.afs.collection('modell').add(data)
+      .then(ref=> {
+       console.log('Ny kategori er lagret!');
+      });
+  }
 
 }
