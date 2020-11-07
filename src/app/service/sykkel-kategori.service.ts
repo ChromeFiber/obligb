@@ -14,8 +14,8 @@ export class SykkelKategoriService {
       map(actions=>{
         return actions.map(a =>{
           const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return {id, data}
+          const kategori = a.payload.doc.id;
+          return {kategori, data}
         })
       })
     )

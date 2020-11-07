@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SykkelKategoriService} from '../service/sykkel-kategori.service';
+import {NgForm} from "@angular/forms";
+
 @Component({
   selector: 'app-sykkelkategori',
   templateUrl: './sykkelkategori.component.html',
