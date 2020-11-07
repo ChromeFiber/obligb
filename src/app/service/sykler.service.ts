@@ -34,6 +34,19 @@ export class SyklerService {
       })
     )
   }
+
+  loadCategories(){
+    return this.afs.collection('modell').snapshotChanges().pipe(
+      map(actions=>{
+        return actions.map(a =>{
+          const data = a.payload.doc.data();
+          const kategori = a.payload.doc.id;
+          return {kategori, data}
+        })
+      })
+    )
+  }
+
   oppdaterSykkel(modellId: string, sykkelId: string, oppdatertData: string){
     this.afs.collection('modell').doc(modellId).collection('todos').doc(sykkelId).update({
       todo: oppdatertData

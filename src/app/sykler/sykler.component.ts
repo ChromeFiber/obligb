@@ -27,13 +27,13 @@ export class SyklerComponent implements OnInit {
   }
   onSubmit(f: NgForm, fr: NgForm, fb: NgForm) {
 
-      let todo= {
-        betegnelse: f.value.todoText,
-        dagpris: fr.value.prisTekst,
-        fabrikk: fb.value.fabrikk,
-        ledig: false,
-      }
-      this.sykkelService.lagreSykkel(this.catId, todo);
+    let todo= {
+      betegnelse: f.value.todoText,
+      dagpris: fr.value.prisTekst,
+      fabrikk: fb.value.fabrikk,
+      ledig: false,
+    }
+    this.sykkelService.lagreSykkel(this.catId, todo);
 
   }
 }

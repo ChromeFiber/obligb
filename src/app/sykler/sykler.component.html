@@ -1,4 +1,5 @@
 
+
 <div class="row">
   <div class="col-md-12">
     <form #f="ngForm" #fr="ngForm" #fb="ngForm" (ngSubmit)="f.form.valid && onSubmit(f, fr, fb)"  class="form-inline">
@@ -24,6 +25,6 @@
 
 </div>
 <div class="sykler" *ngFor="let sykler of sykkel">
-  <h3>{{sykler.data.betegnelse}} dagpris: {{sykler.data.dagpris}}</h3>
+  <h3>Navn: {{sykler.data.betegnelse}} dagpris: {{sykler.data.dagpris}}</h3>
 </div>
 <button routerLink="/">gå tilbake</button>
