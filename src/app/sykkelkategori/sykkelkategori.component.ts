@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SykkelKategoriService} from '../service/sykkel-kategori.service';
 import {NgForm} from "@angular/forms";
 
@@ -11,8 +11,12 @@ export class SykkelkategoriComponent implements OnInit {
   sykkelKategorier: Array<object>;
   categoryName: string = "";
   dataStatus: string = 'Add';
-  sykId: string;
-  constructor(private sks: SykkelKategoriService) { }
+  statusTekst: string = "Legg til kategori"
+  oppdatertKatNavn: string;
+  katId: string;
+
+  constructor(private sks: SykkelKategoriService) {
+  }
 
   ngOnInit(): void {
     this.sks.loadCategories().subscribe(value => {
@@ -20,12 +24,29 @@ export class SykkelkategoriComponent implements OnInit {
       console.log(value);
     });
   }
+
   onSubmit(f: NgForm) {
-    let katInfo = {
-      kategori: f.value.categoryName,
-      antSykkel: 0,
+    if (this.statusTekst == "Legg til kategori") {
+      let katInfo = {
+        kategori: f.value.categoryName,
+        antSykkel: 0,
+      }
+      this.sks.nyKategori(katInfo);
+    } else if (this.statusTekst == "Oppdater kategori") {
+      this.sks.oppdaterKategori(this.katId, f.value.categoryName);
+      f.resetForm();
+      this.statusTekst = "Legg til kategori";
     }
-    this.sks.nyKategori(katInfo);
-    //console.log(randomNum);
+
+  }
+
+  onEdit(kategori: string, id: string) {
+    this.categoryName = kategori;
+    this.statusTekst = "Oppdater kategori";
+    this.katId = id;
+  }
+
+  onDelete(id: string) {
+    this.sks.slettKategori(id);
   }
 }

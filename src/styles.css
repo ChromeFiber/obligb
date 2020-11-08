@@ -1,27 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-.container{
+.container {
   display: flex;
   flex-direction: column;
-
 }
-.sykkel-kategori{
+
+.sykkel-kategori {
   cursor: pointer;
   width: 45%;
   padding-top: 10px;
-
 }
 
-input[type = text]{
+input[type=text] {
   background-color: #fefefe;
   height: 60px;
   padding-left: 20px;
   width: 45vw;
   margin-top: 10px;
 }
-.input{
+
+.input {
   margin-top: 120px;
 }
 
-.knapp{
+.knapp {
   margin-left: 25%;
 }
+
+/*# sourceMappingURL=styles.css.map */

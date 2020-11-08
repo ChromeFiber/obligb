@@ -47,17 +47,19 @@ export class SyklerService {
     )
   }
 
-  oppdaterSykkel(modellId: string, sykkelId: string, oppdatertData: string){
-    this.afs.collection('modell').doc(modellId).collection('todos').doc(sykkelId).update({
-      todo: oppdatertData
+  oppdaterSykkel(modellId: string, sykkelId: string, oppdatertData: string, dp: number, fb: string){
+    this.afs.collection('modell').doc(modellId).collection('sykkel').doc(sykkelId).update({
+      betegnelse: oppdatertData,
+      dagpris: dp,
+      fabrikk: fb
     }).then(()=>{
       console.log('Sykkel redigert suksessfult!');
     });
   }
   slettSykkel(modellId: string, sykkelId: string){
     this.afs.collection('modell').doc(modellId).collection('sykkel').doc(sykkelId).delete().then(()=>{
-      this.afs.doc('categories/'+modellId).update({
-        todoCount: firestore.FieldValue.increment(-1)
+      this.afs.doc('modell/'+modellId).update({
+        antSykkel: firestore.FieldValue.increment(-1)
       });
       console.log('Sykkel er sletta suksessfult!');
     });
