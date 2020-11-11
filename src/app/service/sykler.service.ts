@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import{AngularFirestore} from "@angular/fire/firestore";
-
 import {map} from "rxjs/operators";
 import firebase from "firebase";
-
 import firestore = firebase.firestore;
 
 @Injectable({
   providedIn: 'root'
 })
 export class SyklerService {
-
+  funnet: boolean = false;
   constructor(private afs: AngularFirestore) { }
 
   lagreSykkel(id: string, data){
@@ -34,8 +32,31 @@ export class SyklerService {
       })
     )
   }
+  //sorter etter dagpris
+/*  visKonsoll(katId: string) {
+    this.afs.collection('modell').doc(katId).collection('sykkel').ref.where('ledig', '==', false).get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+        console.log("ny "+JSON.stringify(doc.data()))
+      })
+    })
+  }*/
+  //chaine wheres. blir some 'AND' i mysql
 
-  loadCategories(){
+  visKonsoll1(katId: string) {
+
+      this.afs.collection('modell').doc(katId).collection('sykkel').ref
+        .where('betegnelse', '==', 'medita')
+        .where('dagpris', '>', '100')
+        .where('ledig', '==', true)
+        .get().then((snapshot) => {
+          snapshot.docs.forEach(doc => {
+            console.log("ny "+JSON.stringify(doc.data()))
+          })
+      })
+    }
+
+
+  lastKategorier(){
     return this.afs.collection('modell').snapshotChanges().pipe(
       map(actions=>{
         return actions.map(a =>{
@@ -63,6 +84,10 @@ export class SyklerService {
       });
       console.log('Sykkel er sletta suksessfult!');
     });
-
+  }
+  setLedig(modellId: string, sykkelId: string){
+    this.afs.collection('modell').doc(modellId).collection('sykkel').doc(sykkelId).update({
+      ledig:true,
+    })
   }
 }

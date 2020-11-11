@@ -19,10 +19,12 @@ export class SykkelkategoriComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sks.loadCategories().subscribe(value => {
+    this.sks.visModell().subscribe(value => {
       this.sykkelKategorier = value;
       console.log(value);
     });
+
+    this.sks.visKonsoll();
   }
 
   onSubmit(f: NgForm) {

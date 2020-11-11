@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "coffee-tut-ee545": {
+      "hosting": {
+        "sykkel": [
+          "coffee-tut-ee545"
+        ]
+      }
+    }
+  }
+}

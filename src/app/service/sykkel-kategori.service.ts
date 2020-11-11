@@ -11,7 +11,7 @@ export class SykkelKategoriService {
   constructor(private afs: AngularFirestore) {
   }
 
-  loadCategories() {
+  visModell() {
     return this.afs.collection('modell').snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -21,6 +21,14 @@ export class SykkelKategoriService {
         })
       })
     )
+  }
+
+  visKonsoll() {
+    this.afs.collection('modell').  ref.where('kategori', '==', 'terreng').get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+        console.log(doc.data())
+      })
+    })
   }
 
   nyKategori(data) {

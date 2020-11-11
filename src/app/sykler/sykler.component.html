@@ -15,19 +15,20 @@
             <input type="text" name="fabrikk" [(ngModel)]="fabrikk" placeholder="fabrikk">
           </label>
         </div>
-        <button type="submit" class="btn btn-primary col-md-2 btn-todo btn-block">{{statusTekst}}</button>
+        <button type="submit" class="btn btn-success col-md-2 btn-todo ">{{statusTekst}}</button>
         <div class="text-danger ml-3" *ngIf="f.submitted && todo.invalid && todo.errors.required">
-          Todo is required!
+          Fyll ut feltene!
         </div>
       </form>
     </div>
 
   </div>
   <div class="sykler" *ngFor="let sykler of sykkel">
-    <h3 class="sykkel-kategori">Navn: {{sykler.data.betegnelse}} - dagpris: {{sykler.data.dagpris}}kr</h3>
-    <button class="knapp" (click)="onEdit(sykler.data.betegnelse, sykler.id)">Oppdater sykkel</button>
-    <button class="knapp" (click)="onDelete(sykler.id)">Slett sykkel</button>
+    <h3 class="sykkel-kategori">Navn: {{sykler.data.betegnelse}} Fabrikk: {{sykler.data.fabrikk}} - dagpris: {{sykler.data.dagpris}}kr</h3>
+    <button  class="btn btn-primary col-md-2 " (click)="onEdit(sykler.data.betegnelse, sykler.id)">Oppdater sykkel</button>
+    <button  class="btn btn-danger col-md-2 "  (click)="onDelete(sykler.id)">Slett sykkel</button>
+
   </div>
-  <button class="tilbake" routerLink="/">gå tilbake</button>
+  <button  class="btn btn-secondary col-md-2"  routerLink="/">gå tilbake</button>
 </div>
 

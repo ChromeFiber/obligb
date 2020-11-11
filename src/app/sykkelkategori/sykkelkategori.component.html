@@ -9,7 +9,7 @@
                    [ngClass] = "{'border-danger': f.submitted && category.invalid}">
           </label>
         </div>
-        <button type="submit" class="btn btn-primary col-md-2 btn-todo btn-block">{{statusTekst}}</button>
+        <button type="submit" class="btn btn-success ">{{statusTekst}}</button>
 
         <div class="text-danger ml-3" *ngIf="f.submitted && category.invalid && category.errors.required">
           Category is required!
@@ -22,8 +22,8 @@
     <h3 class="sykkel-kategori" [routerLink]="['/sykkel/', modell.kategori]">
       {{modell.data.kategori}} - antall: {{modell.data.antSykkel}}
     </h3>
-    <button (click)="onEdit(modell.data.kategori, modell.kategori)">Oppdater kategori</button>
-    <button (click)="onDelete(modell.kategori)">Slett kategori</button>
+    <button class="btn btn-primary col-md-2 btn-todo" (click)="onEdit(modell.data.kategori, modell.kategori)">Oppdater kategori</button>
+    <button class="btn btn-danger col-md-2 btn-todo btn-" (click)="onDelete(modell.kategori)">Slett kategori</button>
   </div>
 </div>
 

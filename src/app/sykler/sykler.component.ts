@@ -9,7 +9,7 @@ import {SyklerService} from "../service/sykler.service";
   styleUrls: ['./sykler.component.scss']
 })
 export class SyklerComponent implements OnInit {
-
+  isLedig: string ="Opptatt";
   catId: string;
   sykkel: Array<object>;
   statusTekst: string = 'Legg til sykkel';
@@ -31,6 +31,8 @@ export class SyklerComponent implements OnInit {
       this.sykkel = value;
       console.log(this.sykkel);
     })
+   // this.sykkelService.visKonsoll(this.catId);
+    this.sykkelService.visKonsoll1(this.catId);
   }
 
   onSubmit(f: NgForm, fr: NgForm, fb: NgForm) {
@@ -51,6 +53,7 @@ export class SyklerComponent implements OnInit {
       f.resetForm();
       fr.resetForm();
       fb.resetForm();
+      this.statusTekst = "Legg til sykkel"
     }
   }
 
@@ -62,5 +65,9 @@ export class SyklerComponent implements OnInit {
 
   onDelete(id: string) {
     this.sykkelService.slettSykkel(this.catId, id);
+  }
+  onLedig(sykId: string){
+   this.sykkelService.setLedig(this.catId, sykId);
+   this.isLedig ="ledig";
   }
 }

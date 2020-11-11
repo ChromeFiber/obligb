@@ -122,8 +122,13 @@
               "devServerTarget": "sykkel:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "sykkel"
 }
